@@ -57,7 +57,28 @@ The `Header` component should add the logo on the left, and navigation links on 
 
 The links should use a `<Link>` component to link towards the relevant pages (also imported from `react-router-dom`).
 
-You should use styled-components for all styling.
+**You should use styled-components for all styling.** For example, here's how you might use styled-components to create that header:
+
+```jsx
+function Header() {
+  return (
+    <Wrapper>
+      <Title>Fruit Emporium</Title>
+      <nav>// Navigation here</nav>
+    </Wrapper>
+  );
+}
+
+const Wrapper = styled.header`
+  display: flex;
+  /* Other styles here */
+`;
+
+const Title = styled.h1`
+  font-size: 32px;
+  /* Other styles here */
+`;
+```
 
 You should be able to click the links to update the text on the screen:
 
@@ -102,16 +123,6 @@ Create a new `ListingGrid` component. This component will take an array of store
 const ListingGrid = ({ itemList }) => {
   return 'Todo';
 };
-
-ListingGrid.propTypes = {
-  itemList: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      latinName: PropTypes.string.isRequired,
-      imageSrc: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
 ```
 
 In `src/data.js`, we have a bunch of items we want to render:
@@ -137,10 +148,17 @@ We can import this data into our `Home` component, turn it into an array (hint: 
 
 Inside `ListingGrid`, we'll want to map over this array, and produce some UI for each element of the array. In the screenshot, quite a bit of styling is applied, but you can feel free to style this however you want. The only requirements are that you render the image, the item name, and the item latin name:
 
+### Minimal styling:
+
 ![minimal styling](./__lecture/assets/unstyled-items.png)
+
+### Fancy styling:
+
 ![lots of styling](./__lecture/assets/styled-items.png)
 
-> Hint: To arrange things in a grid, you can either give each one a specific width and use `display: inline-block` to stack them side-by-side. You can also use CSS grid, by using `auto-fit` and `minmax`.
+> Hint: To arrange things in a grid, you can either give each one a specific width and use `display: inline-block` to stack them side-by-side.
+>
+> If you're feeling adventurous, you can also use CSS grid. Here's a tutorial for this kind of layout: https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
 
 ---
 
@@ -167,6 +185,8 @@ const ItemDetails = () => {
 };
 ```
 
+> Read more about `useParams`, and React Router in general, using their documentation: https://reactrouter.com/web/api/Hooks/useparams
+
 Next, we'll need to use that itemId to access the underlying item data (the product name, its price, etc).
 
 In our new `ItemDetails` component, import `items` from `src/data.js`, and use the `itemId` to look up the data.
@@ -182,7 +202,7 @@ Here are the requirements:
 - Large photo of the item
 - Name, latinName, description, countryOfOrigin shown in some way
 - _if_ the item is in stock, show a "Buy now" button. Otherwise, render the text "out of stock".
-- Show the avatar and store name of the seller. Hint: You'll need to import `sellers`.
+- Show the avatar and store name of the seller. _Hint:_ You'll need to import `sellers` from the `data.js` file.
 
 ---
 
