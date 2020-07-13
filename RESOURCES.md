@@ -17,3 +17,7 @@ https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
 https://reacttraining.com/react-router/web/api/NavLink
 
 Useful for the first stretch goal
+
+## Tagged template literals
+
+If you're curious about how styled-components works, with the weird string-function-call-thing, you can read about tagged-template-literals: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
